@@ -17,4 +17,3 @@ define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/');
 define('INDEXPAGE','auth');
 define('ITEMS_PER_PAGE', '20');
 
-
