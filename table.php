@@ -60,6 +60,23 @@ if (isset($_POST['req'])){
     }else $to='';
 
 
+    if ( isset($_POST['sort']) ) {
+        if ($_POST['sort']='asc'){
+            $sort = ' ASC ';
+
+        }
+
+        if ($_POST['sort']='desc'){
+            $sort = ' DESC ';
+
+        }
+        if ($_POST['sort']=''){
+            $sort = '';
+
+        }
+    }else $sort='';
+
+
     //$now = 'DATE(\'2014-06-03\')';
    // $total = $db->select("SELECT count(*) as CNT FROM cdr WHERE STR_TO_DATE(calldate,'%Y-%m-%d')=$now AND dst in ('788032','788040','788033','788031','788113','788012') ");
 $total=$db->select("
@@ -74,7 +91,7 @@ SELECT count(*) as CNT FROM
 
 //$now = 'DATE(NOW())';
 
-echoPage($page,$cnt_pages);
+//echoPage($page,$cnt_pages);
 
   ShowTable($db->select("
 SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM
@@ -82,7 +99,7 @@ SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM
 WHERE CAST(calldate as date)=$now
 
 )as TAB WHERE
- dst in ('788032','788040','788033','788031','788113','788012') ". $from . $to ." ORDER by uniqueid DESC LIMIT ".$start.", ".ITEMS_PER_PAGE));
+ dst in ('788032','788040','788033','788031','788113','788012') ". $from . $to ." ORDER by CAST(calldate as datetime) ". $sort . " LIMIT ".$start.", ".ITEMS_PER_PAGE));
 
 
   //  foreach ($db->select("SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM cdr WHERE DATE(CAST(calldate as date))=$now AND dst in ('788032','788040','788033','788031','788113','788012') ORDER by uniqueid LIMIT ".$start.", ".ITEMS_PER_PAGE ) as $key=>$data){

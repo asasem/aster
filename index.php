@@ -14,7 +14,32 @@
 </head>
 <?php require_once 'helper.php';?>
 <body bgcolor="#F5F3DF" onload="init()">
-<?php ShowTableHeader();?>
+
+<?php
+
+
+
+ShowTableHeader();
+
+
+?>
+<div id="headtable">
+
+   <?php echo '<table border="1" class="features-table">';
+        echo ' <thead>
+        <tr>
+            <td>ДАТА ЗВОНКА</td>
+
+            <td nowrap="" class="data-sort">ИСТОЧНИК</td>
+            <td class="data-sort">НАЗНАЧЕНИЕ</td>
+            <td class="data-sort">ДЛИТЕЛЬНОСТЬ</td>
+            <td class="data-sort">СТАТУС</td>
+            <td class="data-sort">ЗАПИСЬ</td>
+
+        </tr>
+        </thead> <tbody></tbody></table>';?>
+
+</div>
 <div id="content"></div>
 <div id="InfoFile"></div>
 <div id="InfoSound"></div>

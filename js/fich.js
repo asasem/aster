@@ -13,12 +13,13 @@ function _getDate(){
     return curYear +"-"+curMonth+"-"+curDay;
 }
 
-function get_data(page,date,from,to){
+function get_data(page,date,from,to,sort){
     date = date || _getDate();
 from = from || '';
     to = to || '';
+    sort = sort || '';
 
-    $.post("table.php",{date:date,page:page,from:from,to:to,req:'ok'}, function(data){
+    $.post("table.php",{date:date,page:page,from:from,to:to,sort:sort,req:'ok'}, function(data){
         $('#content').html(data);
 
 
@@ -65,6 +66,7 @@ from = from || '';
 
 
         });
+        var count =0;
 
 
 
@@ -158,7 +160,41 @@ get_data(1);
         res();
 
     });
+var count =0;
+    $(".data-sort").click(function (){
 
+
+
+
+
+        if (($(this).hasClass("data-sort") && count == 0)){
+            $(this).addClass("headerSortUp");
+            get_data(1,'','','','asc');
+
+        }
+
+        if ($(this).hasClass("headerSortUp") && count == 1){
+            $(this).removeClass("headerSortUp").addClass("headerSortDown");
+            get_data(1,'','','','desc');
+        }
+
+        if ($(this).hasClass("headerSortDown")&& count == 2){
+            $(this).removeClass("headerSortDown").addClass("headerSortUp");
+
+
+        }
+        count++;
+
+        if (count == 3){
+
+            $(this).removeClass("headerSortUp headerSortDown");
+            count=0;
+            //get_data(1,'','','','');
+        }
+
+
+
+    });
 
 
 

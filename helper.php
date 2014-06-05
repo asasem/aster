@@ -149,11 +149,11 @@ function ShowTable($arr){
   <tr>
   <td>ДАТА ЗВОНКА</td>
 
-  <td nowrap="">ИСТОЧНИК</td>
-  <td class ="data-sort">НАЗНАЧЕНИЕ</td>
-  <td >ДЛИТЕЛЬНОСТЬ</td>
-  <td>СТАТУС</td>
-   <td>ЗАПИСЬ</td>
+  <td nowrap="" class="data-sort">ИСТОЧНИК</td>
+  <td class="data-sort">НАЗНАЧЕНИЕ</td>
+  <td class="data-sort">ДЛИТЕЛЬНОСТЬ</td>
+  <td class="data-sort">СТАТУС</td>
+   <td class="data-sort">ЗАПИСЬ</td>
 
   </tr>
  </thead> <tbody>';
