@@ -150,7 +150,7 @@ function ShowTable($arr){
   <td>ДАТА ЗВОНКА</td>
 
   <td nowrap="">ИСТОЧНИК</td>
-  <td >НАЗНАЧЕНИЕ</td>
+  <td class ="data-sort">НАЗНАЧЕНИЕ</td>
   <td >ДЛИТЕЛЬНОСТЬ</td>
   <td>СТАТУС</td>
    <td>ЗАПИСЬ</td>
