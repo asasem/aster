@@ -100,7 +100,7 @@ SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM
 WHERE CAST(calldate as date)=$now
 
 )as TAB WHERE
- dst in ('788032','788040','788033','788031','788113','788012') ". $from . $to ." ORDER by duration  " . $sort . "  LIMIT ".$start.", ".ITEMS_PER_PAGE;
+ dst in ('788032','788040','788033','788031','788113','788012') ". $from . $to ." ORDER by uniqueid DESC LIMIT ".$start.", ".ITEMS_PER_PAGE;
 //  echo $q;
     ShowTable($db->select($q));
 
