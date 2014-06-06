@@ -98,9 +98,9 @@ table td{
 
 
 
-.features-table thead td
+.features-table td.data-sort
 {
-    font-size: 70%;
+    font-size: 60%;
     font-weight: bold;
   /*  -moz-border-radius-topright: 10px;
     -moz-border-radius-topleft: 10px;*/
