@@ -192,7 +192,7 @@ function ShowTable($arr){
 
                 echo    '<a href="javascript:doPlay('.'\''.'/monitor'. $e[9] .'\''.')" class="play"><img src="play.png"></a>
                         <a href="javascript:doPause()" class="pause"><img src="pause.png"></a>
-                      <a href="javascript:doStop()" class="stop"><img src="stop.png"></a>
+                       <a href="javascript:doStop()" class="stop"><img src="stop.png"></a>
                    <!-- <img class="download" src="download.png" alt="/monitor'. $e[9].'">-->
                     <a href="/monitor'. $e[9].'" class="download" type="application/octet-stream" download><img src="download.png"  ></a>
 </div>'.'</td>';}
