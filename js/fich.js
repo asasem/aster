@@ -13,9 +13,52 @@ function _getDate(){
     return curYear +"-"+curMonth+"-"+curDay;
 }
 
+function sort(el) {
+    var col_sort = el.innerHTML;
+    var tr = el.parentNode;
+    var table = tr.parentNode.parentNode.lastChild;//tr.parentNode;
+    var td, arrow, col_sort_num;
+
+    for (var i=0; (td = tr.getElementsByTagName("td").item(i)); i++) {
+        if (td.innerHTML == col_sort) {
+            col_sort_num = i;
+            if (td.prevsort == "y"){
+                arrow = td.firstChild;
+                el.up = Number(!el.up);
+            }else{
+                td.prevsort = "y";
+                arrow = td.insertBefore(document.createElement("span"),td.firstChild);
+                el.up = 0;
+            }
+            arrow.innerHTML = el.up?"▴ ":"▾ ";
+        }else{
+            if (td.prevsort == "y"){
+                td.prevsort = "n";
+                if (td.firstChild) td.removeChild(td.firstChild);
+            }
+        }
+    }
+
+    var a = new Array();
+
+    for(i=0; i < table.rows.length; i++) {
+        a[i-1] = new Array();
+        a[i-1][0]=table.rows[i].getElementsByTagName("td").item(col_sort_num).innerHTML;
+        a[i-1][1]=table.rows[i];
+    }
+
+    a.sort();
+    if(el.up) a.reverse();
+
+    for(i=0; i < a.length; i++)
+        table.appendChild(a[i][1]);
+
+}
+
+
 function get_data(page,date,from,to,sort){
     date = date || _getDate();
-from = from || '';
+    from = from || '';
     to = to || '';
     sort = sort || '';
 
@@ -66,7 +109,43 @@ from = from || '';
 
 
         });
-        var count =0;
+      /*  var count =0;
+        $(".data-sort").click(function (){
+
+
+
+
+
+            if (($(this).hasClass("data-sort") && count == 0)){
+                $(this).addClass("headerSortUp");
+                //get_data(1,_getDate(),'','','desc');
+               // sort($("td.data-sort"));
+            }
+
+            if ($(this).hasClass("headerSortUp") && count == 1){
+                $(this).removeClass("headerSortUp").addClass("headerSortDown");
+                //get_data(1,_getDate(),'','','asc');
+               // sort($("td.data-sort"));
+            }
+
+            if ($(this).hasClass("headerSortDown")&& count == 2){
+                $(this).removeClass("headerSortDown").addClass("headerSortUp");
+
+
+            }
+            count++;
+
+            if (count == 3){
+
+                $(this).removeClass("headerSortUp headerSortDown");
+                count=0;
+                //get_data(1,'','','','');
+            }
+
+
+
+        });*/
+
 
 
 
@@ -128,7 +207,7 @@ get_data(1);
         var dd =  $("input#datepicker").val();
         var fr = $("#from").val();
         var to = $("#to").val();
-        get_data(1,dd,fr,to);
+        get_data(1,dd,fr,to,'desc');
 
     });
 
@@ -158,41 +237,6 @@ get_data(1);
 
     $("#res").click(function(){
         res();
-
-    });
-var count =0;
-    $(".data-sort").click(function (){
-
-
-
-
-
-        if (($(this).hasClass("data-sort") && count == 0)){
-            $(this).addClass("headerSortUp");
-            get_data(1,'','','','asc');
-
-        }
-
-        if ($(this).hasClass("headerSortUp") && count == 1){
-            $(this).removeClass("headerSortUp").addClass("headerSortDown");
-            get_data(1,'','','','desc');
-        }
-
-        if ($(this).hasClass("headerSortDown")&& count == 2){
-            $(this).removeClass("headerSortDown").addClass("headerSortUp");
-
-
-        }
-        count++;
-
-        if (count == 3){
-
-            $(this).removeClass("headerSortUp headerSortDown");
-            count=0;
-            //get_data(1,'','','','');
-        }
-
-
 
     });
 
