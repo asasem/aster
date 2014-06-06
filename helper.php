@@ -117,7 +117,7 @@ function ShowTableHeader (){
     echo '<table border="1" class="features-table">';
     echo ' <thead>
 
-  <td colspan="4">ПОИСК</td>
+  <td colspan="4" class="data-sort">ПОИСК</td>
 
  </thead> <tbody>';
 
@@ -145,18 +145,19 @@ echo '
 
 function ShowTable($arr){
     echo '<table border="1" class="features-table">';
-    echo ' <thead>
-  <tr>
-  <td>ДАТА ЗВОНКА</td>
+    echo '
 
-  <td nowrap="" class="data-sort">ИСТОЧНИК</td>
-  <td class="data-sort">НАЗНАЧЕНИЕ</td>
-  <td class="data-sort">ДЛИТЕЛЬНОСТЬ</td>
-  <td class="data-sort">СТАТУС</td>
-   <td class="data-sort">ЗАПИСЬ</td>
+  <tr>
+  <td class="data-sort" onclick="sort(this)">ДАТА ЗВОНКА</td>
+  <td class="data-sort" onclick="sort(this)">ИСТОЧНИК</td>
+  <td class="data-sort" onclick="sort(this)">НАЗНАЧЕНИЕ</td>
+  <td class="data-sort" onclick="sort(this)">ДЛИТЕЛЬНОСТЬ</td>
+  <td class="data-sort" onclick="sort(this)">СТАТУС</td>
+   <td class="data-sort" >ЗАПИСЬ</td>
 
   </tr>
- </thead> <tbody>';
+
+  ';
 
     foreach ($arr as $key=>$data){
         switch ($data['disposition'] ){
@@ -191,7 +192,7 @@ function ShowTable($arr){
 
                 echo    '<a href="javascript:doPlay('.'\''.'/monitor'. $e[9] .'\''.')" class="play"><img src="play.png"></a>
                         <a href="javascript:doPause()" class="pause"><img src="pause.png"></a>
-                     <a href="javascript:doStop()" class="stop"><img src="stop.png"></a>
+                      <a href="javascript:doStop()" class="stop"><img src="stop.png"></a>
                    <!-- <img class="download" src="download.png" alt="/monitor'. $e[9].'">-->
                     <a href="/monitor'. $e[9].'" class="download" type="application/octet-stream" download><img src="download.png"  ></a>
 </div>'.'</td>';}
@@ -205,7 +206,7 @@ function ShowTable($arr){
 
 
     }
-    echo '</tbody></table> ';
+    echo '</table> ';
 
 
 }

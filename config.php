@@ -15,5 +15,5 @@ define('DS',DIRECTORY_SEPARATOR);
 define('APP_PATH', __DIR__. DS. '..'. DS. 'app'. DS);
 define('ROOT',$_SERVER['DOCUMENT_ROOT'].'/');
 define('INDEXPAGE','auth');
-define('ITEMS_PER_PAGE', '20');
+define('ITEMS_PER_PAGE', '40');
 
