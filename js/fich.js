@@ -179,8 +179,11 @@ $(document).ready(function() {
         return false;
     });
 
+
+
     $('input#datepicker').datepicker({
         showOn:'both',
+
         buttonImage: 'datepicker.gif',
         maxDate:'+0d',
         onClose: function(dateText, inst) {
@@ -201,11 +204,8 @@ $(document).ready(function() {
 
 get_data(1);
     res();
+    $('input#datepicker').val(_getDate());
     $("input[name='oa']").click(function(){
-        //$(this).prop('checked',$(this).is('checked') ? null:'checked');
-       // $(this).prop( "checked", function( i, val ) {
-         //   return !val;});
-
         if ($(this).is(':checked')){
             $(this).attr('checked','checked');
         }else $(this).removeAttr('checked');
