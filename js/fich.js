@@ -71,6 +71,7 @@ function get_data(page,date,from,to,answer){
 
 
         $('a.resume').hide();
+        $('#content').fadeIn(7000);
 
         $('a.play').click(function() {
 
