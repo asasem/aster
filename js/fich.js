@@ -56,13 +56,13 @@ function sort(el) {
 }
 
 
-function get_data(page,date,from,to,sort){
+function get_data(page,date,from,to,answer){
     date = date || _getDate();
     from = from || '';
     to = to || '';
-    sort = sort || '';
+    answer = answer || '';
 
-    $.post("table.php",{date:date,page:page,from:from,to:to,sort:sort,req:'ok'}, function(data){
+    $.post("table.php",{date:date,page:page,from:from,to:to,answer:answer,req:'ok'}, function(data){
         $('#content').html(data);
 
 
@@ -201,13 +201,27 @@ $(document).ready(function() {
 
 get_data(1);
     res();
+    $("input[name='oa']").click(function(){
+        //$(this).prop('checked',$(this).is('checked') ? null:'checked');
+       // $(this).prop( "checked", function( i, val ) {
+         //   return !val;});
+
+        if ($(this).is(':checked')){
+            $(this).attr('checked','checked');
+        }else $(this).removeAttr('checked');
+
+    });
+
 
 
     $("#go").click(function(){
         var dd =  $("input#datepicker").val();
         var fr = $("#from").val();
         var to = $("#to").val();
-        get_data(1,dd,fr,to,'desc');
+        var oa = $("input[name='oa']").is(":checked");
+
+var answ = oa?'yes':'no';
+        get_data(1,dd,fr,to,answ);
 
     });
 

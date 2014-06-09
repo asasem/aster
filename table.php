@@ -63,27 +63,21 @@ if (isset($_POST['req'])){
 
 
 
-    if ( isset($_POST['sort']) ) {
-        if ($_POST['sort']=''){
-            $sort = '';
+    if ( isset($_POST['answer']) ) {
+      if ($_POST['answer'] == 'yes'){
 
-        }else $sort = '';
-
-        if ($_POST['sort']='asc'){
-            $sort = ' ASC ';
-
-        } else  $sort = ' DESC ';
+          $answer = " AND disposition='ANSWERED' ";
+      }else $answer = '';
 
 
-
-    }else $sort='';
+    }else $answer='';
 
 
     //$now = 'DATE(\'2014-06-03\')';
    // $total = $db->select("SELECT count(*) as CNT FROM cdr WHERE STR_TO_DATE(calldate,'%Y-%m-%d')=$now AND dst in ('788032','788040','788033','788031','788113','788012') ");
 $total=$db->select("
 SELECT count(*) as CNT FROM
-(SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM cdr WHERE CAST(calldate as date)=$now
+(SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM cdr WHERE DATE(calldate)=$now
 )as TAB WHERE
  dst in ('788032','788040','788033','788031','788113','788012')");
     $cnt_pages = ceil( $total[0]['CNT'] / ITEMS_PER_PAGE );
@@ -97,10 +91,10 @@ SELECT count(*) as CNT FROM
 $q = "
 SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM
 (SELECT calldate,src,dst,disposition,duration,recordingfile,uniqueid FROM cdr
-WHERE CAST(calldate as date)=$now
+WHERE DATE(calldate)=$now
 
 )as TAB WHERE
- dst in ('788032','788040','788033','788031','788113','788012') ". $from . $to ." ORDER by uniqueid DESC LIMIT ".$start.", ".ITEMS_PER_PAGE;
+ dst in ('788032','788040','788033','788031','788113','788012') ". $answer . $from . $to ." ORDER by calldate DESC LIMIT ".$start.", ".ITEMS_PER_PAGE;
 //  echo $q;
     ShowTable($db->select($q));
 

@@ -131,8 +131,8 @@ echo '
     <td>По</td><td><input id="datepicker2" name=date_to type="text" ></td>
 </tr>
 <tr>
-    <td>Только Answered</td><td><input name=oa type=checkbox checked="checked"></td>
-    <td>Фильтр по дате</td><td><input name=cd type=checkbox checked="checked"></td>
+    <td>Только Answered</td><td><input name=oa type=checkbox ></td>
+    <td>Фильтр по дате</td><td><input name=cd type=checkbox ></td>
 </tr>
 <tr>
     <td>Применить</td><td><input id="go" type="submit" value="Применить фильтр"></td>
